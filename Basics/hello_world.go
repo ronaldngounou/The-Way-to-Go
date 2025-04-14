@@ -1,6 +1,6 @@
 package main 
 import "fmt"
-func main(){
+// func main(){
 	// var fName string 
 	// fmt.Println("Enter first name: ")
 	// fmt.Scanln(&fName)
@@ -19,11 +19,12 @@ func main(){
 
 	// ageCondition()
 
-	fmt.Print(Hello())
+	// fmt.Print(Hello())
 
-}
+// }
 
 
-func Hello() string{
-	return "Hello, world"
+func Hello(name string){
+	fmt.Print("Hello " + name)
+	return
 }
