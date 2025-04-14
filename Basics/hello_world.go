@@ -1,5 +1,4 @@
 package main 
-import "fmt"
 // func main(){
 	// var fName string 
 	// fmt.Println("Enter first name: ")
@@ -24,7 +23,6 @@ import "fmt"
 // }
 
 
-func Hello(name string){
-	fmt.Print("Hello " + name)
-	return
+func Hello(name string) string{
+	return "Hello " + name
 }
