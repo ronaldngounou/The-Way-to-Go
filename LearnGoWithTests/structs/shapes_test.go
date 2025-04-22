@@ -12,24 +12,29 @@ func TestPerimeter(t *testing.T) {
 	}
 }
 
-
+// Table Driven Tests: https://go.dev/wiki/TableDrivenTests
 func TestArea(t *testing.T) {
-	t.Run("rectangles", func (t *testing.T) {
-		rectangle := Rectange{10.0, 10.0}
-		got := rectangle.Area() // we can call methods on "things"
-		want := 40.0
+	tests := map[string] struct {
+		input Shape
+		result float64
+	} {
+		"rectangles": {
+			input: Rectange{10.0, 10.0},
+			result: 40.0,
+		}, 
+		"circles": {
+			input: Circle{10},
+			result: 314.1592653589793,
+		},
+	}
 
-		if got != want {
-			t.Errorf("got %.2f want %.2f", got, want)
-		}		
-	})
-	t.Run("circles", func(t *testing.T) {
-		circle := Circle{10}
-		got := circle.Area()
-		want := 314.1592653589793
+	for testName, test := range tests {
+		t.Run(testName, func(t *testing.T) {
+			t.Parallel()
+			if got, expected := test.input.Area(), test.result; got != expected {
+				t.Fatalf("got %g, but expected %g", got, expected)
+			}
+		})
+	}
+}
 
-		if got != want {
-			t.Errorf("got %g want %g", got, want)
-		}
-	})
-} 
